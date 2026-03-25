@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Realidad o Fantasía</title>
+
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 30px;
+}
+
+.pregunta {
+    background: white;
+    padding: 20px;
+    margin: 15px auto;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+
+.pregunta:hover {
+    transform: scale(1.02);
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #ddd;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #bbb;
+}
+
+/* colores resultado */
+.correcto {
+    background-color: #4CAF50 !important;
+    color: white;
+}
+
+.incorrecto {
+    background-color: #f44336 !important;
+    color: white;
+}
+
+.resultado {
+    margin-top: 10px;
+    font-weight: bold;
+}
+</style>
+
+</head>
+<body>
+
+<nav style="background: #333; padding: 10px;">
+  <a href="index.html" style="color: white; margin-right: 10px;">Inicio</a>
+  <a href="realidad.html" style="color: white; margin-right: 10px;">Juego</a>
+  <a href="contacto.html" style="color: white;">Contacto</a>
+</nav>  
+
+<h1>🌟 Realidad o Fantasía 🌟</h1>
+
+<div id="quiz"></div>
+
+<script>
+const preguntas = [
+{
+    texto: "Los murciélagos son ciegos.",
+    correcta: false,
+    explicacion: "Aunque usan la ecolocalización para orientarse, sí pueden ver."
+},
+{
+    texto: "El agua hierve a 100 °C en todos los lugares del mundo.",
+    correcta: false,
+    explicacion: "Depende de la altitud: en zonas altas hierve a menor temperatura."
+},
+{
+    texto: "El ser humano tiene más de 5 sentidos.",
+    correcta: true,
+    explicacion: "Además de los 5 clásicos, existen otros como el equilibrio o la percepción del dolor."
+},
+{
+    texto: "La Gran Muralla China es visible desde el espacio a simple vista.",
+    correcta: false,
+    explicacion: "Es un mito muy extendido; no se puede ver sin ayuda desde el espacio."
+},
+{
+    texto: "Los tiburones son mamíferos.",
+    correcta: false,
+    explicacion: "Son peces cartilaginosos, no mamíferos."
+},
+{
+    texto: "Un año luz es una medida de tiempo.",
+    correcta: false,
+    explicacion: "Es una medida de distancia: lo que recorre la luz en un año."
+},
+{
+    texto: "Las plantas producen oxígeno durante el día.",
+    correcta: true,
+    explicacion: "Gracias a la fotosíntesis, liberan oxígeno cuando hay luz."
+}
+];
+
+const contenedor = document.getElementById("quiz");
+
+preguntas.forEach((pregunta, index) => {
+    const div = document.createElement("div");
+    div.classList.add("pregunta");
+
+    div.innerHTML = `
+        <p>${index + 1}. ${pregunta.texto}</p>
+        <button id="v-${index}" onclick="responder(${index}, true)">Verdadero</button>
+        <button id="f-${index}" onclick="responder(${index}, false)">Falso</button>
+        <div id="resultado-${index}" class="resultado"></div>
+    `;
+
+    contenedor.appendChild(div);
+});
+
+function responder(index, respuesta) {
+    const pregunta = preguntas[index];
+    const btnV = document.getElementById(`v-${index}`);
+    const btnF = document.getElementById(`f-${index}`);
+    const resultado = document.getElementById(`resultado-${index}`);
+
+    // desactivar botones después de responder
+    btnV.disabled = true;
+    btnF.disabled = true;
+
+    if (respuesta === pregunta.correcta) {
+        // acierto
+        if (respuesta === true) btnV.classList.add("correcto");
+        else btnF.classList.add("correcto");
+
+        resultado.style.color = "green";
+        resultado.innerHTML = "✔ Correcto<br>" + pregunta.explicacion;
+
+    } else {
+        // fallo
+        if (respuesta === true) btnV.classList.add("incorrecto");
+        else btnF.classList.add("incorrecto");
+
+        // marcar la correcta también en verde
+        if (pregunta.correcta === true) btnV.classList.add("correcto");
+        else btnF.classList.add("correcto");
+
+        resultado.style.color = "red";
+        resultado.innerHTML = "✘ Incorrecto<br>" + pregunta.explicacion;
+    }
+}
+</script>
+
+</body>
+</html>

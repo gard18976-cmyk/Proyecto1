@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Página Web</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(120deg, #4facfe, #00f2fe);
+      min-height: 100vh;
+      color: white;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.3);
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+    }
+
+    nav .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      background: white;
+      color: #333;
+    }
+
+    /* HERO */
+    .hero {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 50px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      background: white;
+      color: #333;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: rgba(0,0,0,0.3);
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- MENÚ -->
+  <nav style="background: #333; padding: 10px;">
+  <a href="index.html" style="color: white; margin-right: 10px;">Inicio</a>
+  <a href="realidad.html" style="color: white; margin-right: 10px;">Juego</a>
+  <a href="contacto.html" style="color: white;">Contacto</a>
+</nav>  
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="hero">
+    <h1>Bienvenido a mi web 🚀</h1>
+    <p>
+      Esta es una página de inicio moderna hecha solo con HTML y CSS.
+      Incluye un menú bonito y diseño responsive básico.
+    </p>
+    <button class="btn">Empezar</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Mi Página Web - Todos los derechos reservados
+  </footer>
+
+</body>
+</html>
